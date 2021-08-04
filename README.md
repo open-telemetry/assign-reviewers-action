@@ -1,2 +1,2 @@
-# assign-reviewers-action
-GitHub action to assign reviewers/approvers/etc based on configuration
+# auto-assign-owners
+Automatically assign and add approvers to component owners of lerna monorepos
