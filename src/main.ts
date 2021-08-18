@@ -41,8 +41,9 @@ async function main() {
 
 
     const reviewers = new Set<string>(assignees);
-    if (reviewers.has(author)) core.info("PR author cannot be a reviewer");
+    if (reviewers.has(author) || reviewers.has(author.toLowerCase())) core.info("PR author cannot be a reviewer");
     reviewers.delete(author);
+    reviewers.delete(author.toLowerCase());
 
     // Do not want to re-request when reviewers have already been requested
     const oldReviewers = await getReviewers(client);
