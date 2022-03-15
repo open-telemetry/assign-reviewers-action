@@ -6,7 +6,7 @@ inputs:
     description: 'Add users as assignees on the PR'
     default: 'true'
     required: false
-  request-reviews:
+  request-user-reviews:
     description: 'Request PR reviews from component contributors'
     default: 'true'
     required: false
