@@ -22,8 +22,6 @@ async function main() {
 
     const author = await getPullAuthor(client);
 
-    console.log('remove me')
-
     if (config.ignoredAuthors.has(author)) {
         return;
     }
