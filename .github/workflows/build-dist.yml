@@ -14,18 +14,5 @@ jobs:
       - run: npm ci
       - run: npm run compile
 
-      # Only the latest commit of the feature branch is available
-      # automatically. To diff with the base branch, we need to
-      # fetch that too (and we only need its latest commit).
-      - run: git fetch origin ${{ github.base_ref }} --depth=1
-
-      - name: Check for dist changes
-        run: |
-          if [[ $(git diff --name-only FETCH_HEAD | grep '^dist/') ]]
-          then
-            echo "Looks like dist doesn't match the source."
-            echo "Please ensure the dist is build by running npm run compile."
-            false
-          else
-            echo "dist is up to date. Looks good!"
-          fi
+      - name: Validate dist
+        run: git diff --exit-code dist || (echo "Looks like dist doesn't match the source. Please ensure dist is built by running npm run compile" && exit 1)
