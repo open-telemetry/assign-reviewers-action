@@ -1,0 +1,30 @@
+name: Ensure Dist Build
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run compile
+
+      - name: Check for dist changes
+        run: |
+          # Only the latest commit of the feature branch is available
+          # automatically. To diff with the base branch, we need to
+          # fetch that too (and we only need its latest commit).
+          git fetch origin ${{ github.base_ref }} --depth=1
+          if [[ $(git diff --name-only FETCH_HEAD | grep '^dist/') ]]
+          then
+            echo "dist is up to date. Looks good!"
+          else
+            echo "Looks like `dist` doesn't match the source."
+            echo "Please ensure the `dist` is build by running `npm run compile`."
+            false
+          fi
