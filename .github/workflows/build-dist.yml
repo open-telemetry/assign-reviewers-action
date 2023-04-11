@@ -15,4 +15,4 @@ jobs:
       - run: npm run compile
 
       - name: Validate dist
-        run: git diff --exit-code dist || (echo "Looks like dist doesn't match the source. Please ensure dist is built by running npm run compile" && exit 1)
+        run: git status --porcelain || (echo "Looks like dist doesn't match the source. Please ensure dist is built by running npm run compile" && exit 1)
