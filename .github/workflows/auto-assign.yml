@@ -1,5 +1,7 @@
 name: Assign Reviewers
 on:
+  # pull_request_target is needed instead of just pull_request
+  # because repository write permission is needed to assign reviewers
   pull_request_target:
 
 jobs:
