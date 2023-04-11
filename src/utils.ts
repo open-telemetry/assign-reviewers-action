@@ -53,6 +53,11 @@ function match(name: string, ownedPath: string): boolean {
     // Remove leading and trailing path separator
     ownedPath = ownedPath.replace(/^\//, "").replace(/\/$/, "");
 
+    if (ownedPath.startsWith("*.")) {
+      const extension = ownedPath.substring(1)
+      return name.endsWith(extension)
+    }
+
     const ownedPathParts = ownedPath.split(path.sep);
     const filePathParts = name.split(path.sep).slice(0, ownedPathParts.length);
 
@@ -113,15 +118,6 @@ export async function getChangedFiles(client: Client, base: string, head: string
             "Please submit an issue on this action's GitHub repo."
         )
     }
-
-    // Ensure that the head commit is ahead of the base commit.
-    if (compareResponse.data.status !== 'ahead') {
-        throw new Error(
-            `The head commit for this ${github.context.eventName} event is not ahead of the base commit. ` +
-            "Please submit an issue on this action's GitHub repo."
-        )
-    }
-
 
     const changedFiles = compareResponse.data.files;
 
