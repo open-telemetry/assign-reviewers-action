@@ -5,6 +5,7 @@
   "main": "lib/main.js",
   "scripts": {
     "compile": "tsc --build && ncc build --source-map --license LICENSE",
+    "postcompile": "rimraf lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
