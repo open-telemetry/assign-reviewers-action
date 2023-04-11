@@ -200,6 +200,6 @@ export async function loadYaml(client: Client, ref: string, location: string): P
         const contents = await getFileContents(client, ref, location);
         return yaml.load(contents, { filename: location });
     } catch (err) {
-        throw new Error(`Failed to load configuration ${ref.slice(0, 7)} ${err.message} ${location}`)
+        throw new Error(`Failed to load configuration ${ref.slice(0, 7)} ${err} ${location}`)
     }
 }
