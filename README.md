@@ -28,6 +28,10 @@ components:
     - user3
     - user4
 
+  # User assignment can be configured based on a file extension
+  "*.md":
+    - user5
+
 # Optionally ignore some PR authors to reduce spam for assignees and reviewers
 ignored-authors:
   - dependabot
