@@ -17,4 +17,4 @@ jobs:
       - run: npm run compile
 
       - name: Validate dist
-        run: git diff --name-only --exit-code diff || (echo "Looks like dist doesn't match the source. Please ensure dist is built by running npm install and npm run compile" && exit 1)
+        run: git diff --name-only --exit-code dist || (echo "Looks like dist doesn't match the source. Please ensure dist is built by running npm install and npm run compile" && exit 1)
