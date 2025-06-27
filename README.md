@@ -97,3 +97,10 @@ Determines if pull request reviews should be requested from configured users for
 
 If all of your contributors have write access to your repo, CODEOWNERS is a great solution.
 If, like many open source projects, you would like to assign some level of ownership of a single component of your repository, but you don't want to grant those users write access to the repo, this action can help.
+
+#### Maintainers
+
+- [Daniel Dyla](https://github.com/dyladan), Dynatrace
+- [Trask Stalnaker](https://github.com/trask), Microsoft
+
+For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
