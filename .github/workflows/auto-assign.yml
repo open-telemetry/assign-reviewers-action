@@ -4,8 +4,13 @@ on:
   # because repository write permission is needed to assign reviewers
   pull_request_target:
 
+permissions:
+  contents: read
+
 jobs:
   run_self:
+    permissions:
+      pull-requests: write # required for assigning reviewers to PRs
     runs-on: ubuntu-latest
     name: Assign Reviewers
     steps:
